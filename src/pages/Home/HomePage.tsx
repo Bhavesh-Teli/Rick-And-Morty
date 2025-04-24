@@ -16,6 +16,7 @@ import {
   fetchLocationFilterOptions,
 } from "../../components/services/api";
 import "./HomePage.css";
+import Loader from "../../components/Loader/Loader";
 
 // Define the type of cards based on the page (e.g., character, episode, location)
 interface HomePageProps {
@@ -44,6 +45,7 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
     episode: [],
     type: [],
   });
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Handle filter change
   const handleFilterChange = (newFilters: SearchFilters) => {
@@ -57,6 +59,8 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
   // Fetch data on page number, filters, or search change
   useEffect(() => {
     const fetchApiData = async () => {
+      if (loading) return;
+      setLoading(true); // Start loading
       try {
         const data = await fetchData(pageNumber, search, filters);
         setFetchedData(data);
@@ -68,10 +72,13 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
         } else {
           console.error("Failed to fetch data:", error);
         }
+      } finally {
+        setLoading(false); // End loading
       }
     };
     fetchApiData();
-  }, [pageNumber, filters, search, fetchData]); // Dependencies for refetching data
+  }, [pageNumber, filters, search, fetchData]);
+   // Dependencies for refetching data
 
   // Fetch filter options on component mount
   useEffect(() => {
@@ -116,15 +123,18 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
           filterType={filterType}
         />
       )}
-      <div className="content-layout">
-        {results.length > 0 ? (
-          <Cards page={cardsType} results={getCardData(cardsType, results)} />
-        ) : (
-          <div className="no-results">
-            No results found for the selected filters.
-          </div>
-        )}
-      </div>
+    <div className="content-layout">
+  {loading ? (
+    <Loader />
+  ) : results.length > 0 ? (
+    <Cards page={cardsType} results={getCardData(cardsType, results)} />
+  ) : (
+    <div className="no-results">
+      No results found for the selected filters.
+    </div>
+  )}
+</div>
+
       <Pagination pageCount={totalPages} onPageChange={setPageNumber} />
     </div>
   );

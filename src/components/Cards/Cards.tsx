@@ -25,7 +25,9 @@ const Cards: React.FC<CardsProps> = ({ page, results }) => {
             <div key={character.id} className="card" onClick={() => handleCardClick(character.id)}>
               <img src={character.image} alt={character.name} />
               <h3>{character.name}</h3>
-              <div className={`status-badge ${character.status.toLowerCase()}`}>{character.status}</div>
+              <div className={`status-badge ${character.status.toLowerCase()}`}>
+                {character.status}
+              </div>
               <p>
                 <strong>Species:</strong> {character.species}
               </p>

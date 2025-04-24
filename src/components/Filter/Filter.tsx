@@ -67,6 +67,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
       location: "",
       episode: "",
       type: "",
+      dimension: "",
     });
   };
 

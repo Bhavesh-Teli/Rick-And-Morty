@@ -4,6 +4,7 @@ import { Character, Location, Episode } from "../../../../types/types";
 import Cards from "../Cards";
 import { fetchCharacterById, fetchLocationById, fetchEpisodeById } from "../../services/api";
 import "./CardDetails.css";
+import Loader from "../../Loader/Loader";
 
 type PageType = "character" | "location" | "episode";
 
@@ -11,12 +12,15 @@ const CardDetails: React.FC = () => {
   const { page, id } = useParams<{ page: PageType; id: string }>();
   const [data, setData] = useState<Character | Location | Episode | null>(null);
   const [residents, setResidents] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
       if (!page || !id) return; // Guard clause to avoid undefined values
 
       try {
+        setLoading(true);
         let result: Character | Location | Episode | undefined;
 
         if (page === "character") {
@@ -37,19 +41,22 @@ const CardDetails: React.FC = () => {
           setResidents(characterData);
         }
 
-        if (result !== undefined) {
+        if (result) {
           setData(result);
         } else {
-          console.warn("No data returned for the specified page and id.");
+          console.warn("No data returned.");
         }
       } catch (error) {
         console.error("Failed to fetch details:", error);
+      }finally {
+        setLoading(false); // End loader
       }
     };
 
     fetchData();
   }, [page, id]);
-  if (!data) return <div>Loading...</div>;
+  if (loading) return <Loader />;
+
 
   if (page === "character") {
     const character = data as Character;

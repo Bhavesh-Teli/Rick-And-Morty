@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* Fixed 4 cards per row */
   gap: 20px 30px; /* Increased vertical gap between cards */
-  padding: 20px;
+  padding-top: 20px;
   
 }
 
