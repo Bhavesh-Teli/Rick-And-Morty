@@ -1,12 +1,5 @@
 import axios from "axios";
-import {
-  Character,
-  ApiResponse,
-  Location,
-  Episode,
-  Filters,
-  FilterOptions,
-} from "../../../types/types";
+import { Character, ApiResponse, Location, Episode, Filters, FilterOptions } from "../../../types/types";
 
 // Base URL for the Rick and Morty API
 const BASE_URL = "https://rickandmortyapi.com/api";
@@ -26,63 +19,40 @@ const toQueryParams = (params: Record<string, string | number>): string => {
 };
 
 // Fetch paginated characters with optional filters
-export const fetchCharacters = async (
-  page: number = 1,
-  name: string = "",
-  filters: Filters = {}
-): Promise<ApiResponse<Character>> => {
+export const fetchCharacters = async (page: number = 1, name: string = "", filters: Filters = {}): Promise<ApiResponse<Character>> => {
   const queryParams = toQueryParams({ page, name, ...filters });
-  const response = await axios.get<ApiResponse<Character>>(
-    `${BASE_URL}/character?${queryParams}`
-  );
+  const response = await axios.get<ApiResponse<Character>>(`${BASE_URL}/character?${queryParams}`);
   return response.data;
 };
 
 // Fetch a single character by ID
-export const fetchCharacterById = async (
-  id: number | string
-): Promise<Character> => {
+export const fetchCharacterById = async (id: number | string): Promise<Character> => {
   const response = await axios.get<Character>(`${BASE_URL}/character/${id}`);
   return response.data;
 };
 
 // Fetch paginated locations with optional filters
-export const fetchLocations = async (
-  page: number = 1,
-  name: string = "",
-  filters: Filters = {}
-): Promise<ApiResponse<Location>> => {
+export const fetchLocations = async (page: number = 1, name: string = "", filters: Filters = {}): Promise<ApiResponse<Location>> => {
   const queryParams = toQueryParams({ page, name, ...filters });
-  const response = await axios.get<ApiResponse<Location>>(
-    `${BASE_URL}/location?${queryParams}`
-  );
+  const response = await axios.get<ApiResponse<Location>>(`${BASE_URL}/location?${queryParams}`);
   return response.data;
 };
 
 // Fetch a single location by ID
-export const fetchLocationById = async (
-  id: string | number
-): Promise<Location> => {
+export const fetchLocationById = async (id: string | number): Promise<Location> => {
   const response = await axios.get<Location>(`${BASE_URL}/location/${id}`);
   return response.data;
 };
 
 // Fetch paginated episodes with optional search by name
-export const fetchEpisodes = async (
-  page: number = 1,
-  name: string = ""
-): Promise<ApiResponse<Episode>> => {
-  const queryParams = toQueryParams({ page, name });
-  const response = await axios.get<ApiResponse<Episode>>(
-    `${BASE_URL}/episode?${queryParams}`
-  );
+export const fetchEpisodes = async (page: number = 1, name: string = "", filters: Filters = {}): Promise<ApiResponse<Episode>> => {
+  const queryParams = toQueryParams({ page, name, ...filters });
+  const response = await axios.get<ApiResponse<Episode>>(`${BASE_URL}/episode?${queryParams}`);
   return response.data;
 };
 
 // Fetch a single episode by ID
-export const fetchEpisodeById = async (
-  id: string | number
-): Promise<Episode> => {
+export const fetchEpisodeById = async (id: string | number): Promise<Episode> => {
   const response = await axios.get<Episode>(`${BASE_URL}/episode/${id}`);
   return response.data;
 };
@@ -133,22 +103,3 @@ export const fetchLocationFilterOptions = async (): Promise<FilterOptions> => {
     dimension: unique(allLocations.map((l) => l.dimension).filter((d): d is string => d !== undefined)),
   };
 };
-
-export const fetchEpisodeFilterOptions = async (): Promise<FilterOptions> => {
-  const unique = <T,>(arr: T[]) => Array.from(new Set(arr.filter(Boolean)));
-
-  const allEpisodes: Episode[] = [];
-  let episodeNextUrl: string | null = `${BASE_URL}/episode`;
-
-  // Loop through all episode pages
-  while (episodeNextUrl) {
-    const { data }: { data: ApiResponse<Episode> } = await axios.get(episodeNextUrl);
-    allEpisodes.push(...data.results);
-    episodeNextUrl = data.info.next;
-  }
-
-  // Extract distinct values for filters
-  return {
-    id: unique(allEpisodes.map((e) => e.id)),
-  };
-}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Filter.css";
-import {FilterOptions , SearchFilters } from "../../../types/types";
+import { FilterOptions, SearchFilters } from "../../../types/types";
 
 // Reusable SelectFilter component
 const SelectFilter = ({
@@ -57,7 +57,6 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
       ...prev,
       [key]: value,
     }));
-    console.log(filters)
   };
 
   const clearFilters = () => {
@@ -99,7 +98,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
             label="Type"
             value={filters.type || ""}
             onChange={(e) => handleChange("type", e.target.value)}
-            options={availableFilters.type || []} 
+            options={availableFilters.type || []}
           />
         </div>
       )}
@@ -117,7 +116,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
             label="Type"
             value={filters.type || ""}
             onChange={(e) => handleChange("type", e.target.value)}
-            options={availableFilters.type || []}  
+            options={availableFilters.type || []}
           />
         </div>
       )}
@@ -125,25 +124,17 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
       {/* Episode Filters */}
       {filterType === "episode" && (
         <div className="filter-row">
-          <div className="select-wrapper">
-            <label>Episode</label>
-            <select
-              value={filters.episode || ""}
-              onChange={(e) => handleChange("episode", e.target.value)}
-              className="filter-select"
-            >
-              <option value="">Select Episode</option>
-              {getEpisodeNumbers(availableFilters.episode || []).map((num) => (
-                <option key={num} value={num}>
-                  Episode {num}
-                </option>
-              ))}
-            </select>
-          </div>
+          <SelectFilter
+            label="Episode"
+            value={filters.episode || ""}
+            onChange={(e) => handleChange("episode", e.target.value)}
+            options={getEpisodeNumbers(availableFilters.episode || [])}
+          />
         </div>
       )}
-
-      <button onClick={clearFilters} className="clear-btn">Clear Filters</button>
+      <button onClick={clearFilters} className="clear-btn">
+        Clear Filters
+      </button>
     </div>
   );
 };

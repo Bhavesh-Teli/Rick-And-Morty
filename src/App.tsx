@@ -5,7 +5,6 @@ import CharacterPage from "./pages/CharactePage";
 import LocationPage from "./pages/LocationPage";
 import EpisodePage from "./pages/EpisodesPage";
 
-
 const App = () => {
   return (
     <div className="App">

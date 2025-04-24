@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
-import { ApiResponse, FilterOptions, SearchFilters, Character, Episode, Location } from "../../../types/types";
+import {
+  ApiResponse,
+  FilterOptions,
+  SearchFilters,
+  Character,
+  Episode,
+  Location,
+} from "../../../types/types";
 import Search from "../../components/Search/Search";
 import Filter from "../../components/Filter/Filter";
 import Cards from "../../components/Cards/Cards";
 import Pagination from "../../components/Pagination/Pagination";
-import { fetchCharacterFilterOptions, fetchLocationFilterOptions } from "../../components/services/api";
-import "./HomePage.css"
+import {
+  fetchCharacterFilterOptions,
+  fetchLocationFilterOptions,
+} from "../../components/services/api";
+import "./HomePage.css";
+
 // Define the type of cards based on the page (e.g., character, episode, location)
 interface HomePageProps {
   fetchData: (page: number, search: string, filters: SearchFilters) => Promise<ApiResponse<Character | Episode | Location>>;
@@ -50,9 +61,9 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
         const data = await fetchData(pageNumber, search, filters);
         setFetchedData(data);
       } catch (error: unknown) {
-        if (error && typeof error === 'object' && 'response' in error && 
-            error.response && typeof error.response === 'object' && 
-            'status' in error.response && error.response.status === 404) {
+        if (error && typeof error === 'object' && 'response' in error &&
+          error.response && typeof error.response === 'object' &&
+          'status' in error.response && error.response.status === 404) {
           setFetchedData({ info: { count: 0, pages: 0, next: null, prev: null }, results: [] });
         } else {
           console.error("Failed to fetch data:", error);
@@ -97,14 +108,21 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
   return (
     <div className="main-container">
       <Search setSearch={setSearch} setPageNumber={setPageNumber} title={cardsType} />
-      <Filter onFilterChange={handleFilterChange} availableFilters={availableFilters} filterType={filterType} />
+    
+      {filterType !== "episode" && (
+        <Filter
+          onFilterChange={handleFilterChange}
+          availableFilters={availableFilters}
+          filterType={filterType}
+        />
+      )}
       <div className="content-layout">
         {results.length > 0 ? (
           <Cards page={cardsType} results={getCardData(cardsType, results)} />
         ) : (
           <div className="no-results">
-          No results found for the selected filters.
-        </div>
+            No results found for the selected filters.
+          </div>
         )}
       </div>
       <Pagination pageCount={totalPages} onPageChange={setPageNumber} />

@@ -4,121 +4,107 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin: 16px 0;
 }
 
 /* Filter row to arrange the select boxes */
 .filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 /* Individual select field wrapper */
 .select-wrapper {
-  flex: 1 1 22%;
-  min-width: 200px;
+  flex: 1 1 200px;
+  min-width: 180px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-/* Hover effect for each filter option */
-.select-wrapper:hover {
-  transform: translateY(-5px);
 }
 
 /* Label for each select field */
 .select-wrapper label {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1a73e8;
 }
 
 /* Styling for select dropdown */
 .filter-select {
-  padding: 10px;
-  font-size: 1rem;
+  padding: 10px 14px;
+  font-size: 0.95rem;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border: 1px solid #e0e7ff;
+  background-color: #f8faff;
   color: #333;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.2s ease;
   cursor: pointer;
+  appearance: none;
+  padding-right: 30px;
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #007bff;
-  background-color: #e6f3ff;
+  border-color: #1a73e8;
 }
 
 /* Hover effect for select dropdown */
 .filter-select:hover {
-  border-color: #007bff;
-  background-color: #e6f3ff;
+  border-color: #1a73e8;
 }
 
 /* Clear Filters Button */
 .clear-btn {
-  align-self: flex-end;
-  padding: 12px 30px;
-  background-color: #ff4747;
+  padding: 10px 20px;
+  background-color: #1a73e8;
   color: white;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
+  height: 40px;
+  align-self: flex-end;
+  margin-bottom: 1px;
 }
 
 .clear-btn:hover {
-  background-color: #e60000;
-  transform: scale(1.05);
+  background-color: #1765cc;
 }
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   .filter-row {
     flex-direction: column;
-    gap: 10px;
+    align-items: stretch;
+    gap: 12px;
   }
-
+  
   .select-wrapper {
     flex: 1 1 100%;
     min-width: 100%;
   }
-
+  
   .clear-btn {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 8px;
+    align-self: stretch;
   }
 }
 
 @media (max-width: 480px) {
   .filter-wrapper {
-    padding: 15px;
+    padding: 16px;
   }
-
-  .clear-btn {
-    font-size: 0.9rem;
-  }
-
-  .select-wrapper {
-    min-width: 100%;
-    margin-bottom: 15px;
-  }
-
+  
   .filter-select {
-    padding: 10px;
+    padding: 8px 12px;
   }
 }

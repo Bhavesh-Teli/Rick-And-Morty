@@ -1,5 +1,4 @@
-// Search.tsx
-// import React, { useState } from "react";
+import React from "react";
 import "./Search.css";
 
 interface SearchProps {
@@ -17,13 +16,8 @@ const Search: React.FC<SearchProps> = ({ setSearch, setPageNumber, title }) => {
 
   return (
     <div className="search-container">
-      <h2 className="search-heading"> {title.charAt(0).toUpperCase() + title.slice(1)}</h2>
-      <input
-        type="text"
-        placeholder={`Search ${title.toLowerCase()}...`}
-        className="search-input"
-        onChange={handleInputChange}
-      />
+      <h2 className="search-heading">{title.charAt(0).toUpperCase() + title.slice(1)}</h2>
+      <input type="text" placeholder={`Search ${title.toLowerCase()}...`} className="search-input" onChange={handleInputChange} />
     </div>
   );
 };

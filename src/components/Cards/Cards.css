@@ -32,14 +32,14 @@
 }
 
 .card h3 {
-  margin: 12px 0 6px;
-  font-size: 1.2rem;
+  margin: 12px 0 2px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: #1a73e8;
 }
 
 .card p {
-  margin: 4px 0;
+  margin: 1px 0;
   font-size: 0.95rem;
   color: #444;
 }
@@ -47,11 +47,12 @@
 .status-badge {
   display: inline-block;
   padding: 5px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
+  border-radius: 12px;
+  margin-bottom: 4px;
   font-size: 0.85rem;
   font-weight: bold;
   color: white;
+  width: fit-content;
 }
 
 .status-badge.alive {

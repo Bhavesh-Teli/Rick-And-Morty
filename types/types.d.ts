@@ -45,7 +45,6 @@ export interface Character {
     gender?: string;
   }
 
-
   
   // 5. API Response Interface (Generic)
  export interface ApiResponse<T> {
@@ -78,21 +77,7 @@ export interface Character {
     gender?: string;
   }
   
-  // 7. Global AppState Interface (If using Context/Redux)
-  export interface AppState {
-    characters: Character[];
-    episodes: Episode[];
-    locations: Location[];
-    currentPage: number;
-    filters: SearchFilters;
-  }
-  
-  // 8. Error Interface (For Error Handling)
-  export interface Error {
-    message: string;
-    code: number;
-  }
-  
+
 
   // types.ts
 export interface FilterOptions {

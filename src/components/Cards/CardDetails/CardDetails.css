@@ -56,31 +56,6 @@
   font-weight: 600;
 }
 
-/* Status badge */
-.status-badge {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
-  text-transform: capitalize;
-  width: fit-content;
-}
-
-.status-badge.alive {
-  background-color: #34d399; /* green-400 */
-}
-
-.status-badge.dead {
-  background-color: #f87171; /* red-400 */
-}
-
-.status-badge.unknown {
-  background-color: #a1a1aa; /* gray-400 */
-}
-
 /* Back button (optional) */
 .back-button {
   align-self: flex-start;

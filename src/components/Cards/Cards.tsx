@@ -20,21 +20,24 @@ const Cards: React.FC<CardsProps> = ({ page, results }) => {
       {results.map((item) => {
         if (page === "character") {
           const character = item as Character;
+
           return (
-            <div
-              key={character.id}
-              className="card"
-              onClick={() => handleCardClick(character.id)}
-            >
+            <div key={character.id} className="card" onClick={() => handleCardClick(character.id)}>
               <img src={character.image} alt={character.name} />
               <h3>{character.name}</h3>
-              <div className={`status-badge ${character.status.toLowerCase()}`}>
-                {character.status}
-              </div>
-              <p><strong>Species:</strong> {character.species}</p>
-              <p><strong>Gender:</strong> {character.gender}</p>
-              <p><strong>Origin:</strong> {character.origin.name}</p>
-              <p><strong>Location:</strong> {character.location.name}</p>
+              <div className={`status-badge ${character.status.toLowerCase()}`}>{character.status}</div>
+              <p>
+                <strong>Species:</strong> {character.species}
+              </p>
+              <p>
+                <strong>Gender:</strong> {character.gender}
+              </p>
+              <p>
+                <strong>Origin:</strong> {character.origin.name}
+              </p>
+              <p>
+                <strong>Location:</strong> {character.location.name}
+              </p>
             </div>
           );
         }
@@ -42,15 +45,17 @@ const Cards: React.FC<CardsProps> = ({ page, results }) => {
         if (page === "location") {
           const location = item as Location;
           return (
-            <div
-              key={location.id}
-              className="card"
-              onClick={() => handleCardClick(location.id!)}
-            >
+            <div key={location.id} className="card" onClick={() => handleCardClick(location.id)}>
               <h3>{location.name}</h3>
-              <p><strong>Type:</strong> {location.type}</p>
-              <p><strong>Dimension:</strong> {location.dimension}</p>
-              <p><strong>Residents:</strong> {location.residents?.length}</p>
+              <p>
+                <strong>Type:</strong> {location.type}
+              </p>
+              <p>
+                <strong>Dimension:</strong> {location.dimension}
+              </p>
+              <p>
+                <strong>Residents:</strong> {location.residents?.length}
+              </p>
             </div>
           );
         }
@@ -58,20 +63,20 @@ const Cards: React.FC<CardsProps> = ({ page, results }) => {
         if (page === "episode") {
           const episode = item as Episode;
           return (
-            <div
-              key={episode.id}
-              className="card"
-              onClick={() => handleCardClick(episode.id)}
-            >
+            <div key={episode.id} className="card" onClick={() => handleCardClick(episode.id)}>
               <h3>{episode.name}</h3>
-              <p><strong>Air Date:</strong> {episode.air_date}</p>
-              <p><strong>Episode:</strong> {episode.episode}</p>
-              <p><strong>Characters:</strong> {episode.characters?.length}</p>
+              <p>
+                <strong>Air Date:</strong> {episode.air_date}
+              </p>
+              <p>
+                <strong>Episode:</strong> {episode.episode}
+              </p>
+              <p>
+                <strong>Characters:</strong> {episode.characters?.length}
+              </p>
             </div>
           );
         }
-
-        return null;
       })}
     </div>
   );
