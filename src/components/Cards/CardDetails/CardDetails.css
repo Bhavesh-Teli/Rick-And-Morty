@@ -1,0 +1,120 @@
+.card-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2e2e2e;
+}
+
+/* Header for Character only */
+.card-details-header {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 920px;
+  width: 100%;
+  padding: 12px;
+
+}
+
+.card-details-image {
+  width: 320px;
+  height: 100%;
+  margin-top: 12px;
+
+
+}
+
+.card-details-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.card-details-info h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #1e1e2f;
+}
+
+.details-item,
+.card-details-info p {
+  margin: 6px 0;
+  font-size: 1.05rem;
+  /* line-height: 1.6; */
+}
+
+.card-details-info strong {
+  font-weight: 600;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  width: fit-content;
+}
+
+.status-badge.alive {
+  background-color: #34d399; /* green-400 */
+}
+
+.status-badge.dead {
+  background-color: #f87171; /* red-400 */
+}
+
+.status-badge.unknown {
+  background-color: #a1a1aa; /* gray-400 */
+}
+
+/* Back button (optional) */
+.back-button {
+  align-self: flex-start;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e2f;
+  color: #00ffb3;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #00ffb3;
+  color: #1e1e2f;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-details-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-details-image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .card-details-info {
+    padding: 16px;
+  }
+}

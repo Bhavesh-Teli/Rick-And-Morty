@@ -1,0 +1,86 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Fixed 4 cards per row */
+  gap: 20px 30px; /* Increased vertical gap between cards */
+  padding: 20px;
+  
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column; /* Align the content in a vertical stack */
+  justify-content: space-between;
+ 
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+}
+
+.status-badge.alive {
+  background-color: #28a745;
+}
+
+.status-badge.dead {
+  background-color: #dc3545;
+}
+
+.status-badge.unknown {
+  background-color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row for medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* 1 card per row for mobile screens */
+  }
+}

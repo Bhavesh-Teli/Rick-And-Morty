@@ -1,0 +1,124 @@
+/* Main wrapper for the filter */
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter row to arrange the select boxes */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Individual select field wrapper */
+.select-wrapper {
+  flex: 1 1 22%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for each filter option */
+.select-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* Label for each select field */
+.select-wrapper label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Styling for select dropdown */
+.filter-select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #e6f3ff;
+}
+
+/* Hover effect for select dropdown */
+.filter-select:hover {
+  border-color: #007bff;
+  background-color: #e6f3ff;
+}
+
+/* Clear Filters Button */
+.clear-btn {
+  align-self: flex-end;
+  padding: 12px 30px;
+  background-color: #ff4747;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clear-btn:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .select-wrapper {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .clear-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-wrapper {
+    padding: 15px;
+  }
+
+  .clear-btn {
+    font-size: 0.9rem;
+  }
+
+  .select-wrapper {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .filter-select {
+    padding: 10px;
+  }
+}
