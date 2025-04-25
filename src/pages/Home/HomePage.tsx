@@ -59,7 +59,6 @@ const HomePage = ({ fetchData, cardsType, filterType }: HomePageProps) => {
   // Fetch data on page number, filters, or search change
   useEffect(() => {
     const fetchApiData = async () => {
-      if (loading) return;
       setLoading(true); // Start loading
       try {
         const data = await fetchData(pageNumber, search, filters);

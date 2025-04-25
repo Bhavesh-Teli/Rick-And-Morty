@@ -39,6 +39,7 @@
   width: 100%;
 }
 
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .content-layout {

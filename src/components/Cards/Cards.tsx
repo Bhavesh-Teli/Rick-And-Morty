@@ -7,7 +7,10 @@ interface CardsProps {
   page: "character" | "location" | "episode";
   results: Character[] | Location[] | Episode[];
 }
-
+/**
+ * Cards component displays a list of cards (characters, locations, or episodes).
+ * Each card includes basic details about the entity and navigates to the respective detailed page on click.
+ */
 const Cards: React.FC<CardsProps> = ({ page, results }) => {
   const navigate = useNavigate();
 

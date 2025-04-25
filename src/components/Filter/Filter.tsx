@@ -27,6 +27,9 @@ const SelectFilter = ({
   </div>
 );
 
+
+// Get Episode number from episode url
+
 const getEpisodeNumbers = (episodes: string[]) => {
   return episodes.map((epUrl) => epUrl.split("/").pop() || "");
 };
@@ -73,7 +76,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange, availableFilters, filte
 
   return (
     <div className="filter-wrapper">
-      {/* Character Filters */}
+      {/* Character Filters  */}
       {filterType === "character" && (
         <div className="filter-row">
           <SelectFilter

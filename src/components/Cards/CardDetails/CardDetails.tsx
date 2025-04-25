@@ -8,6 +8,11 @@ import Loader from "../../Loader/Loader";
 
 type PageType = "character" | "location" | "episode";
 
+/**
+ * CardDetails component is responsible for displaying detailed information
+ * about a specific character, location, or episode based on the `page` and `id` URL parameters.
+ */
+
 const CardDetails: React.FC = () => {
   const { page, id } = useParams<{ page: PageType; id: string }>();
   const [data, setData] = useState<Character | Location | Episode | null>(null);
@@ -16,6 +21,7 @@ const CardDetails: React.FC = () => {
 
 
   useEffect(() => {
+    // Function to fetch the relevant data based on the page type (character, location, episode)
     const fetchData = async () => {
       if (!page || !id) return; // Guard clause to avoid undefined values
 
@@ -48,7 +54,7 @@ const CardDetails: React.FC = () => {
         }
       } catch (error) {
         console.error("Failed to fetch details:", error);
-      }finally {
+      } finally {
         setLoading(false); // End loader
       }
     };

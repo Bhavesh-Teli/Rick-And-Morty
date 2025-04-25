@@ -5,6 +5,9 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  overflow: visible;
 }
 
 /* Pagination Styling */
@@ -15,12 +18,15 @@
   margin: 0;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 5px;
+  width: auto;
+  max-width: 100%;
 }
 
 /* Pagination Item */
 .page-item {
-  margin: 0 5px;
-  display: inline-block;
+  margin: 0;
+  display: inline-flex;
   transition: transform 0.2s ease;
 }
 
@@ -38,8 +44,12 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 14px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.2s ease, color 0.2s ease;
+  min-width: 14px;
+  text-align: center;
 }
 
 /* Hover effect on page links */
@@ -57,23 +67,29 @@
 }
 
 /* Previous and Next item styles */
-.previous-item,
-.next-item {
-  padding: 8px 12px;
+.previous-item, .next-item {
+  padding: 0;
   background-color: #f5f5f5;
   border-radius: 5px;
   border: 1px solid #ddd;
   color: #555;
   cursor: pointer;
   text-decoration: none;
-  font-size: 14px;
   margin: 0 5px;
   transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+}
+
+.previous-item a, .next-item a {
+  padding: 8px 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Hover effect on Previous and Next */
-.previous-item:hover,
-.next-item:hover {
+.previous-item:hover, .next-item:hover {
   background-color: #007bff;
   color: white;
 }
@@ -85,60 +101,181 @@
   transition: color 0.2s ease;
 }
 
-.previous-item:hover .arrow,
-.next-item:hover .arrow {
+.previous-item:hover .arrow, .next-item:hover .arrow {
   color: white;
 }
 
 /* Break label styling */
-.break-label {
+.break-item {
+  margin: 0 2px;
+}
+
+.break-link {
   padding: 8px 16px;
   font-size: 14px;
   color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Responsive styles for smaller screens */
-@media (max-width: 768px) {
+/* Large screens (above 1024px) */
+@media (min-width: 1025px) {
+  .pagination {
+    gap: 5px;
+  }
+  
+  .page-link {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Medium screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pagination {
+    gap: 4px;
+  }
+  
+  .page-link {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+
+
+/* Small tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .pagination {
+    gap: 3px;
+  }
+  
   .page-link {
     padding: 6px 12px;
     font-size: 12px;
+    min-width: 12px;
   }
-
-  .previous-item,
-  .next-item {
+  
+  .previous-item a, .next-item a {
     padding: 6px 10px;
     font-size: 12px;
   }
-
+  
   .pagination-container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .arrow {
+    font-size: 16px;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile L to Small tablets (425px - 480px) */
+@media (min-width: 426px) and (max-width: 480px) {
   .pagination {
-    flex-direction: column;
-    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-
-  .page-item {
-    margin-bottom: 5px;
+  
+  .page-item, .previous-item, .next-item {
+    margin: 2px;
   }
-
-  .pagination-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
+  
   .page-link {
     padding: 5px 10px;
+    font-size: 11px;
+    min-width: 10px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .arrow {
+    font-size: 14px;
+  }
+}
+
+/* Mobile M (375px - 425px) */
+@media (min-width: 376px) and (max-width: 425px) {
+  .pagination {
+    gap: 3px;
+    justify-content: center;
+  }
+  
+  .page-item, .previous-item, .next-item {
+    margin: 2px;
+  }
+  
+  .page-link {
+    padding: 4px 8px;
+    font-size: 11px;
+    min-width: 8px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  .arrow {
+    font-size: 14px;
+  }
+}
+
+/* Mobile S (320px - 375px) */
+@media (min-width: 321px) and (max-width: 375px) {
+  .pagination {
+    gap: 2px;
+  }
+  
+  .page-link {
+    padding: 4px 7px;
+    font-size: 10px;
+    min-width: 6px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 4px 7px;
+    font-size: 10px;
+  }
+  
+  .arrow {
     font-size: 12px;
   }
+}
 
-  .previous-item,
-  .next-item {
-    padding: 5px 10px;
+/* Extra Small Mobile (320px and below) */
+@media (max-width: 320px) {
+  .pagination {
+    gap: 2px;
+  }
+  
+  .page-link {
+    padding: 3px 6px;
+    font-size: 10px;
+    min-width: 5px;
+  }
+  
+  .previous-item a, .next-item a {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  
+  .arrow {
     font-size: 12px;
   }
 }

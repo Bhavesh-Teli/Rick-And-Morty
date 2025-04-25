@@ -1,6 +1,9 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 
+// NavBar component renders the navigation bar with links to different pages.
+// It contains links to Characters, Locations, and Episodes pages.
+
 const NavBar = () => {
   return (
     <nav className="navbar">

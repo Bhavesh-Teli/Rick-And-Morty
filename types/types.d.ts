@@ -15,39 +15,39 @@ export interface Character {
   url: string;
   created: string;
 }
-  
-  // 2. Location Interface
-  export interface Location {
-    id: number;
-    name: string;
-    url: string;
-    type?: string;
-    dimension?: string;
-    residents?: string[];
-    created?: string;
-  }
-  // 3. Episode Interface
-  export interface Episode {
-    id: number;
-    name: string;
-    air_date: string;
-    episode: string;
-    characters: string[];
-    url: string;
-    created: string;
-  }
 
-  export interface Filters {
-    name?: string;
-    status?: string;
-    species?: string;
-    type?: string;
-    gender?: string;
-  }
+// 2. Location Interface
+export interface Location {
+  id: number;
+  name: string;
+  url: string;
+  type?: string;
+  dimension?: string;
+  residents?: string[];
+  created?: string;
+}
+// 3. Episode Interface
+export interface Episode {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+}
 
-  
-  // 5. API Response Interface (Generic)
- export interface ApiResponse<T> {
+export interface Filters {
+  name?: string;
+  status?: string;
+  species?: string;
+  type?: string;
+  gender?: string;
+}
+
+
+// 5. API Response Interface (Generic)
+export interface ApiResponse<T> {
   info: {
     count: number;
     pages: number;
@@ -59,27 +59,19 @@ export interface Character {
 
 
 
-  // 4. Search Filters Interface
-  export interface SearchFilters {
-    status?: string;
-    species?: string;
-    gender?: string;
-    location?:string;
-    episode?:string;
-    type?: string;
-    dimension?: string;
-  }
-  // 6. Character Filter Interface
-  export interface CharacterFilter {
-    name?: string;
-    status?: string;
-    species?: string;
-    gender?: string;
-  }
-  
+// 4. Search Filters Interface
+export interface SearchFilters {
+  status?: string;
+  species?: string;
+  gender?: string;
+  location?: string;
+  episode?: string;
+  type?: string;
+  dimension?: string;
+}
 
 
-  // types.ts
+// types.ts
 export interface FilterOptions {
   status?: string[];
   gender?: string[];
@@ -87,7 +79,7 @@ export interface FilterOptions {
   location?: string[];
   episode?: string[];
   type?: string[];
-  locationType?:string[];
-  dimension?:string[];
+  locationType?: string[];
+  dimension?: string[];
 }
 
